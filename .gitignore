@@ -1,0 +1,48 @@
+# Environment variables and API keys
+.env
+.env.local
+.env.production
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated output files
+temp_files/
+logs/
+
+# Specific files to ignore
+*.log
+*.json
+!knowledge_base/*.json
+
+# Python-specific ignores
+*.pyc
+*.pyo
+__pycache__/
+
+# Test-related ignores
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Other common ignores
+*.bak
+*.tmp
+*.swp

@@ -1,0 +1,26 @@
+# requirements.txt - Install these packages
+
+# Core bot functionality
+python-telegram-bot>=21.0
+openai>=1.50.0
+python-dotenv==1.0.0
+httpx>=0.27.0
+
+# Web search and HTTP requests
+aiohttp==3.9.3
+requests==2.31.0
+
+# HTML parsing for web content extraction
+beautifulsoup4==4.12.2
+lxml==4.9.4
+
+# Audio/video processing (requires ffmpeg to be installed separately)
+# ffmpeg-python==0.2.0  # Optional: for advanced video processing
+
+# Document processing
+PyPDF2==3.0.1
+python-docx==1.1.0
+
+# Advanced knowledge base (optional - uncomment for vector search)
+# chromadb==0.4.22
+# sentence-transformers==2.2.2
