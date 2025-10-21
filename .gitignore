@@ -1,7 +1,32 @@
-# Environment variables and API keys
+# Environment variables and API keys (CRITICAL - NEVER COMMIT THESE)
 .env
+.env.*
+!.env.example
 .env.local
 .env.production
+.env.development
+.env.staging
+
+# Secrets and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*secret*
+*token*
+*credential*
+*password*
+credentials.json
+token.json
+secrets.json
+
+# Database backups and dumps
+*.sql
+*.dump
+*.db-wal
+*.db-shm
 
 # Virtual environment
 venv/

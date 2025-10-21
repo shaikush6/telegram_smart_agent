@@ -19,20 +19,40 @@ class Config:
 
         # Optional API Keys for enhanced functionality
         self.PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY")  # For web search
+        self.SCRAPING_API_KEY = os.getenv("SCRAPING_API_KEY")      # For reliable web scraping
+        self.ARCHIVE_API_KEY = os.getenv("ARCHIVE_API_KEY")        # For paid archiving providers
+
+        # Database Configuration
+        self.DB_NAME = os.getenv("DB_NAME", "shopsmart")
+        self.DB_USER = os.getenv("DB_USER", "postgres")
+        self.DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
+        self.DB_HOST = os.getenv("DB_HOST", "localhost")
+        self.DB_PORT = os.getenv("DB_PORT", "5432")
 
         # Bot Configuration
         self.MAX_MESSAGE_LENGTH = 4000
         self.MAX_CONVERSATION_HISTORY = 20
-        self.DEFAULT_MODEL = "gpt-4"
+        self.DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gpt-4o-mini")
+        self.EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
 
         # File Processing Settings
         self.MAX_FILE_SIZE_MB = 50
         self.TEMP_DIR = "temp_files"
         self.KNOWLEDGE_BASE_DIR = "knowledge_base"
+        self.SCREENSHOT_DIR = os.getenv("SCREENSHOT_DIR", os.path.join(self.TEMP_DIR, "screenshots"))
 
         # Rate Limiting
         self.MAX_REQUESTS_PER_MINUTE = 30
         self.MAX_TOKENS_PER_DAY = 100000
+
+        # Rendering & Vision Enhancements
+        self.RENDERER_URL = os.getenv("RENDERER_URL")
+        self.RENDERER_API_KEY = os.getenv("RENDERER_API_KEY")
+        self.RENDERER_TIMEOUT = int(os.getenv("RENDERER_TIMEOUT", "25"))
+        self.RENDERER_MIN_WORDS = int(os.getenv("RENDERER_MIN_WORDS", "40"))
+        self.ENABLE_RENDERER = os.getenv("ENABLE_RENDERER", "true").lower() not in {"false", "0", "no"}
+        self.ENABLE_SCREENSHOT_OCR = os.getenv("ENABLE_SCREENSHOT_OCR", "true").lower() not in {"false", "0", "no"}
+        self.VISION_MODEL = os.getenv("VISION_MODEL", "gpt-4o-mini-vision")
 
         # Validate required settings
         self._validate_config()
@@ -55,6 +75,7 @@ class Config:
         # Create directories if they don't exist
         os.makedirs(self.TEMP_DIR, exist_ok=True)
         os.makedirs(self.KNOWLEDGE_BASE_DIR, exist_ok=True)
+        os.makedirs(self.SCREENSHOT_DIR, exist_ok=True)
 
     def get_search_config(self):
         """Get available search configurations"""
@@ -73,4 +94,5 @@ Config Status:
 - OpenAI API Key: {'✅' if self.OPENAI_API_KEY else '❌'}
 - Perplexity API Key: {'✅' if self.PERPLEXITY_API_KEY else '❌'}
 - Default Model: {self.DEFAULT_MODEL}
+- Embedding Model: {self.EMBEDDING_MODEL}
         """
