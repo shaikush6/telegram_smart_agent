@@ -19,7 +19,9 @@ logger = logging.getLogger(__name__)
 
 config = Config()
 
-DATABASE_URL = (
+# Support both individual DB variables and DATABASE_URL environment variable
+import os
+DATABASE_URL = os.getenv("DATABASE_URL") or (
     f"postgresql://{config.DB_USER}:{config.DB_PASSWORD}"
     f"@{config.DB_HOST}:{config.DB_PORT}/{config.DB_NAME}"
 )
